@@ -5,13 +5,12 @@ import VueAxios from 'vue-axios'
 
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
-
 export  default  new  Vuex.Store({
     state: {
         token:  localStorage.getItem('token') ||  '',
         currentUser: JSON.parse(localStorage.getItem('currentUser')),
-        baseUrl: "http://localhost:8000/medicaltest/",
-        homeUrl: "http://localhost:8000/",
+        baseUrl: process.env.VUE_APP_API_URL,
+        homeUrl: process.env.VUE_APP_HOME_URL,
         monthNames: ["January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ]
