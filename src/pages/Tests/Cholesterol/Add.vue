@@ -11,12 +11,28 @@
       <div class="card-body">
         <form @submit.prevent="addRecord">
           <div class="form-group">
-            <label for="systolic">Systolic Value</label>
-            <input type="number" v-model="form.systolic" class="form-control" id="systolic">
+            <label for="hdl">HDL Value</label>
+            <input type="number" v-model="form.hdl" class="form-control" id="hdl">
           </div>
           <div class="form-group">
-            <label for="diastolic">Diastolic Value</label>
-            <input type="number" v-model="form.diastolic" class="form-control" id="diastolic">
+            <label for="ldl">LDL Value</label>
+            <input type="number" v-model="form.ldl" class="form-control" id="ldl">
+          </div>
+          <div class="form-group">
+            <label for="total_cholesterol">Total Cholesterol Value</label>
+            <input type="number" v-model="form.total_cholestrol" class="form-control" id="total_cholesterol">
+          </div>
+          <div class="form-group">
+            <label for="triglycerides">Total Triglycerides Value</label>
+            <input type="number" v-model="form.triglycerides" class="form-control" id="triglycerides">
+          </div>
+          <div class="form-group">
+            <label for="vldl">VLDL Value</label>
+            <input type="number" v-model="form.vldl" class="form-control" id="vldl">
+          </div>
+          <div class="form-group">
+            <label for="unit">Unit</label>
+            <input type="text" v-model="form.unit" class="form-control" id="unit">
           </div>
           <div class="form-group">
             <label for="date">Date</label>
@@ -39,9 +55,12 @@ export default {
   data(){
     return {
       form: {
-        systolic: 0,
-        diastolic: 0,
-        test_date: new Date(),
+        hdl: 0,
+        ldl: 0,
+        total_cholestrol: 0,
+        triglycerides: 0,
+        vldl: 0,
+        unit: '',
         user: 0
       },
       dateformat: "yyyy-MM-dd",
@@ -55,17 +74,17 @@ export default {
       const data = this.form
       console.log(data)
       this.$store.dispatch("add_request", {
-        endpoint: "bloodpressure/tests/",
+        endpoint: "cholestrol/tests/",
         payload: data
       })
-          .then(res => {
-            console.log(res.data)
-            this.$toast.success("Test Added!")
-            this.$router.push({name: 'AllBloodPressureTests', params: {id : this.$route.params.id}})
-          })
-          .catch(err => {
-            console.log(err.response)
-          });
+      .then(res => {
+        console.log(res.data)
+        this.$toast.success("Test Added!")
+        this.$router.push({name: 'AllCholesterolTests', params: {id : this.$route.params.id}})
+      })
+      .catch(err => {
+        console.log(err.response)
+      });
     }
   }
 
