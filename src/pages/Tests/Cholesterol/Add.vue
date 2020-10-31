@@ -30,10 +30,10 @@
             <label for="vldl">VLDL Value</label>
             <input type="number" v-model="form.vldl" class="form-control" id="vldl">
           </div>
-          <div class="form-group">
-            <label for="unit">Unit</label>
-            <input type="text" v-model="form.unit" class="form-control" id="unit">
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label for="unit">Unit</label>-->
+<!--            <input type="text" v-model="form.unit" class="form-control" id="unit">-->
+<!--          </div>-->
           <div class="form-group">
             <label for="date">Date</label>
             <datepicker id="date" :format="dateformat" v-model="form.test_date" input-class="form-control"></datepicker>
@@ -60,7 +60,8 @@ export default {
         total_cholestrol: 0,
         triglycerides: 0,
         vldl: 0,
-        unit: '',
+        test_date: new Date(),
+        // unit: '',
         user: 0
       },
       dateformat: "yyyy-MM-dd",
