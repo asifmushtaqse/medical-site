@@ -17,6 +17,8 @@ npm install
 ### Compiles and hot-reloads for development
 ```
 npm run serve
+after running this command you can view the site on 
+http://localhost:8080/login
 ```
 
 ### Customize configuration
