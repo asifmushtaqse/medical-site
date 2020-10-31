@@ -1,23 +1,22 @@
 # medical-site
 
-## Project setup
+## 1) Git Clone
+
 ```
+git clone https://github.com/asifmushtaqse/medical-site.git
+```
+
+## 2) Project setup
+```
+go to medical-site folder in cmd
+cd medical-site
+Then run command
 npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
