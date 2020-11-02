@@ -8,9 +8,9 @@
         <div class="collapse show" id="cholesterol">
           <div class="card-body">
             <div>
-              <LineChart v-if="bloodPressureData" :chart-data="bloodPressureData" />
+              <LineChart v-if="testData" :chart-data="testData" />
             </div>
-            <p class="text-center mb-0" v-if="!bloodPressureData">No record found!</p>
+            <p class="text-center mb-0" v-if="!testData">No record found!</p>
           </div>
           <hr />
           <p class="text-center">
