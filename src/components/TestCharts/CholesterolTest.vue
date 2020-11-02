@@ -37,34 +37,70 @@ export default {
   props: ["userId"],
   data(){
     return {
-      bloodPressureData: {
-        labels: ["12 January", "14 January", "15 January", "16 January", " 17 January"],
-        datasets: [
-          {
-            label: "Systolic",
-            backgroundColor: "blue",
-            data: [2,3,6,8,9]
-          },
-          {
-            label: "Disystolic",
-            backgroundColor: "orange",
-            data: [5,6,8,6,2]
-          },
-          {
-            label: "Alostic",
-            backgroundColor: "red",
-            data: [10,8,11, 14, 13]
-          }
-        ]
-      }
+      testData: null,
     }
   },
   mounted() {
-    // this.getCholesterolTest()
+    this.getCholesterolTest()
   },
   methods: {
     getCholesterolTest() {
-
+      const months = this.$store.getters.getMonthNames
+      this.$store.dispatch("list_request", {
+        endpoint: "cholestrol/tests/?userid="+this.userId,
+      })
+      .then(res => {
+        const labels = []
+        const ldl = []
+        const hdl = []
+        const total_cholesterol = []
+        const triglycerides = []
+        const vldl = []
+        res.data.forEach(function(item){
+          const date = new Date(item.test_date)
+          labels.push(date.getDate() + " " + months[date.getMonth()])
+          ldl.push(item.ldl)
+          hdl.push(item.hdl)
+          total_cholesterol.push(item.total_cholestrol)
+          triglycerides.push(item.triglycerides)
+          vldl.push(item.vldl)
+        })
+        if(labels.length > 0){
+          this.bloodPressureData = {
+            labels: labels,
+            datasets: [
+              {
+                label: "LDL",
+                backgroundColor: "blue",
+                data: ldl
+              },
+              {
+                label: "HDL",
+                backgroundColor: "red",
+                data: hdl
+              },
+              {
+                label: "Cholesterol",
+                backgroundColor: "orange",
+                data: total_cholesterol
+              },
+              {
+                label: "Triglycerides",
+                backgroundColor: "yellow",
+                data: triglycerides
+              },
+              {
+                label: "VLDL",
+                backgroundColor: "green",
+                data: vldl
+              }
+            ]
+          }
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
     }
   },
   computed: mapGetters(['isAdminOrStaff'])
