@@ -54,6 +54,11 @@ const routes = [
         component: () => import('../pages/Tests/BloodPressure/All.vue'),
       },
       {
+        path: 'users/:id/tests/blood-pressure/:testId/edit',
+        name: 'EditBloodPressureTest',
+        component: () => import('../pages/Tests/BloodPressure/Edit.vue'),
+      },
+      {
         path: 'users/:id/tests/blood-pressure/add',
         name: 'AddBloodPressureTest',
         component: () => import('../pages/Tests/BloodPressure/Add.vue'),

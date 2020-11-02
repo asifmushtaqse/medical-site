@@ -8,7 +8,7 @@
         <div class="collapse show" id="bloodpressuretest">
           <div class="card-body">
             <div>
-              <BarChart v-if="bloodPressureData" :chart-data="bloodPressureData" />
+              <BarChart v-if="bloodPressureData" :chart-data="bloodPressureData" :options="chartOptions" />
             </div>
             <p class="text-center mb-0" v-if="!bloodPressureData">No record found!</p>
           </div>
@@ -37,7 +37,20 @@ export default {
   props: ["userId"],
   data(){
     return {
-      bloodPressureData: null
+      bloodPressureData: null,
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        barValueSpacing: 20,
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 60
+            }
+          }]
+        }
+      },
     }
   },
   mounted() {
