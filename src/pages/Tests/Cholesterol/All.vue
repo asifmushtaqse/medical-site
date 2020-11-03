@@ -50,14 +50,14 @@ export default {
         endpoint: "cholestrol/tests",
         id: id + "/"
       })
-        .then(res => {
-          console.log(res)
-          this.$toast.success("Test deleted!")
-          this.getItems()
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      .then(res => {
+        console.log(res)
+        this.$toast.success("Test deleted!")
+        this.getItems()
+      })
+      .catch(err => {
+        console.log(err);
+      });
     },
     handleAction(actionName, data) {
       console.log(actionName, data);
@@ -65,7 +65,7 @@ export default {
         this.deleteRecord(data.id);
       }
       if(actionName === 'edit'){
-        this.$router.push({ name: 'EditBloodPressureTest', params: { id: data.user, testId: data.id } })
+        this.$router.push({ name: 'EditCholesterolTest', params: { id: data.user, testId: data.id } })
       }
     }
   },

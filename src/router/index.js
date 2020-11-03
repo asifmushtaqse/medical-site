@@ -69,6 +69,11 @@ const routes = [
         component: () => import('../pages/Tests/Cholesterol/All.vue'),
       },
       {
+        path: 'users/:id/tests/cholesterol/:testId/edit',
+        name: 'EditCholesterolTest',
+        component: () => import('../pages/Tests/Cholesterol/Edit.vue'),
+      },
+      {
         path: 'users/:id/tests/cholesterol/add',
         name: 'AddCholesterolTest',
         component: () => import('../pages/Tests/Cholesterol/Add.vue'),
