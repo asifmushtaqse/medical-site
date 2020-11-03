@@ -42,15 +42,7 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         barValueSpacing: 20,
-        scales: {
-          yAxes: [{
-            display: true,
-            ticks: {
-              min: 0,
-              max: 200,
-            }
-          }]
-        }
+        scales: null
       },
     }
   },
@@ -73,6 +65,19 @@ export default {
           systolic.push(item.systolic)
           diastolic.push(item.diastolic)
         })
+        let max = Math.max(...systolic)
+        if(max < Math.max(...diastolic)){
+          max = Math.max(...diastolic)
+        }
+        let min = Math.min(...systolic)
+        if(min > Math.min(...diastolic)){
+          min = Math.min(...diastolic)
+        }
+        if(min >= 20){
+          min -= 20;
+        }else{
+          min = 0;
+        }
         if(labels.length > 0){
           this.bloodPressureData = {
             labels: labels,
@@ -88,6 +93,15 @@ export default {
                 data: diastolic
               }
             ]
+          }
+          this.chartOptions.scales = {
+            yAxes: [{
+              display: true,
+              ticks: {
+                min: min,
+                max: max + 40,
+              }
+            }]
           }
         }
       })
