@@ -38,7 +38,7 @@
             <label for="date">Date</label>
             <datepicker id="date" :format="dateformat" v-model="form.test_date" input-class="form-control"></datepicker>
           </div>
-          <button type="submit" class="btn btn-primary">Add Test</button>
+          <button type="submit" class="btn btn-primary">Update Test</button>
         </form>
       </div>
     </div>
@@ -95,7 +95,7 @@ export default {
       .then(res => {
         console.log(res.data)
         this.$toast.success("Test Added!")
-        this.$router.push({name: 'AllBloodPressureTests', params: {id : this.$route.params.id}})
+        this.$router.push({name: 'AllCholesterolTests', params: {id : this.$route.params.id}})
       })
       .catch(err => {
         console.log(err.response)
