@@ -66,7 +66,7 @@ export default {
           vldl.push(item.vldl)
         })
         if(labels.length > 0){
-          this.bloodPressureData = {
+          this.testData = {
             labels: labels,
             datasets: [
               {
