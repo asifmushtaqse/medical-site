@@ -42,6 +42,15 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         barValueSpacing: 20,
+        scales: {
+          yAxes: [{
+            display: true,
+            ticks: {
+              min: 0,
+              max: 200,
+            }
+          }]
+        }
       },
     }
   },
