@@ -8,7 +8,7 @@
         <div class="collapse show" id="cholesterol">
           <div class="card-body">
             <div>
-              <LineChart v-if="testData" :chart-data="testData" />
+              <BarChart v-if="testData" :chart-data="testData" />
             </div>
             <p class="text-center mb-0" v-if="!testData">No record found!</p>
           </div>
@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import LineChart from "@/charts/LineChart";
+import BarChart from "@/charts/BarChart";
 import {mapGetters} from "vuex";
 export default {
   components: {
-    LineChart
+    BarChart
   },
   props: ["userId"],
   data(){
