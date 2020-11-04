@@ -41,7 +41,6 @@ export default {
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
-        barValueSpacing: 20,
         scales: null
       },
     }
