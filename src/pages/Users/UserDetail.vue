@@ -25,15 +25,18 @@
     </div>
 
     <BloodPressureTest :user-id="this.$route.params.id" />
+    <CholesterolTest :user-id="this.$route.params.id" />
 
   </div>
 </template>
 
 <script>
 import BloodPressureTest from "@/components/TestCharts/BloodPressureTest";
+import CholesterolTest from "@/components/TestCharts/CholesterolTest";
 export default {
   components: {
-    BloodPressureTest
+    BloodPressureTest,
+    CholesterolTest
   },
   data(){
     return {
