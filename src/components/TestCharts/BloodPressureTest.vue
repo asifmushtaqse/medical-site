@@ -77,6 +77,7 @@ export default {
         }else{
           min = 0;
         }
+
         if(labels.length > 0){
           this.bloodPressureData = {
             labels: labels,
@@ -98,7 +99,7 @@ export default {
               display: true,
               ticks: {
                 min: min,
-                max: max + 10,
+                max: max,
               }
             }]
           }
