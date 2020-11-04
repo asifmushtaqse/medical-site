@@ -8,7 +8,7 @@
         <div class="collapse show" id="cholesterol">
           <div class="card-body">
             <div>
-              <BarChart v-if="testData" :chart-data="testData" />
+              <BarChart v-if="testData" :chart-data="testData" :options="chartOptions" />
             </div>
             <p class="text-center mb-0" v-if="!testData">No record found!</p>
           </div>
@@ -38,6 +38,12 @@ export default {
   data(){
     return {
       testData: null,
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        barValueSpacing: 20,
+        scales: null
+      },
     }
   },
   mounted() {
@@ -65,6 +71,14 @@ export default {
           triglycerides.push(item.triglycerides)
           vldl.push(item.vldl)
         })
+        const allvalues = ldl.concat(hdl).concat(total_cholesterol).concat(triglycerides).concat(vldl)
+        let max = Math.max(...allvalues)
+        let min = Math.min(...allvalues)
+        if(min >= 20){
+          min -= 20;
+        }else{
+          min = 0;
+        }
         if(labels.length > 0){
           this.testData = {
             labels: labels,
@@ -95,6 +109,15 @@ export default {
                 data: vldl
               }
             ]
+          }
+          this.chartOptions.scales = {
+            yAxes: [{
+              display: true,
+              ticks: {
+                min: min,
+                max: max + 40,
+              }
+            }]
           }
         }
       })
