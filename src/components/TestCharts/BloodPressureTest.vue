@@ -41,7 +41,17 @@ export default {
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
-        scales: null
+        scales: null,
+        lineAt: [
+            {
+              value: [120,180],
+              color: "red"
+            },
+            {
+              value: [80,120],
+              color: "blue"
+            }
+        ],
       },
     }
   },
@@ -91,7 +101,8 @@ export default {
                 label: "Disystolic",
                 backgroundColor: "red",
                 data: diastolic
-              }
+              },
+
             ]
           }
           this.chartOptions.scales = {
