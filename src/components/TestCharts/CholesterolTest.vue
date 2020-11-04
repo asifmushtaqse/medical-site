@@ -115,7 +115,7 @@ export default {
               display: true,
               ticks: {
                 min: min,
-                max: max + 40,
+                max: max + 10,
               }
             }]
           }
