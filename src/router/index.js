@@ -77,7 +77,17 @@ const routes = [
         path: 'users/:id/tests/cholesterol/add',
         name: 'AddCholesterolTest',
         component: () => import('../pages/Tests/Cholesterol/Add.vue'),
-      }
+      },
+      {
+        path: 'normal-values/:test',
+        name: 'NormalValues',
+        component: () => import('../pages/Tests/NormalValues/All.vue'),
+      },
+      {
+        path: 'normal-values/:test/:id/edit',
+        name: 'EditNormalValues',
+        component: () => import('../pages/Tests/NormalValues/Edit.vue'),
+      },
     ]
   }
 ]
