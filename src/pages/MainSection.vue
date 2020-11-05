@@ -4,7 +4,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <TopBar />
-        <router-view></router-view>
+        <router-view :key="$route.fullPath"></router-view>
       </div>
       <Footer />
     </div>
