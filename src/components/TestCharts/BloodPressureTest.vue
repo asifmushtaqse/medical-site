@@ -42,16 +42,7 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         scales: null,
-        lineAt: [
-            {
-              value: [120,180],
-              color: "red"
-            },
-            {
-              value: [80,120],
-              color: "blue"
-            }
-        ],
+        lineAt: null,
       },
     }
   },
@@ -66,6 +57,18 @@ export default {
       })
       .then(res => {
         console.log(res.data)
+
+        this.chartOptions.lineAt = [
+          {
+            value: [res.data.min_diastolic, res.data.max_diastolic],
+            color: "red"
+          },
+          {
+            value: [res.data.min_systolic,res.data.max_systolic],
+            color: "blue"
+          }
+        ]
+
       });
     },
     getBloodPressureData(){
