@@ -56,9 +56,18 @@ export default {
     }
   },
   mounted() {
+    this.getBloodPressureNormalValues()
     this.getBloodPressureData()
   },
   methods: {
+    getBloodPressureNormalValues(){
+      this.$store.dispatch("list_request", {
+        endpoint: "bloodpressure/normal-values/",
+      })
+      .then(res => {
+        console.log(res.data)
+      });
+    },
     getBloodPressureData(){
       const months = this.$store.getters.getMonthNames
       this.$store.dispatch("list_request", {
